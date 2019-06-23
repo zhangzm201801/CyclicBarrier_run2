@@ -16,6 +16,11 @@ public class MyService {
 		try {
 			System.out.println(Thread.currentThread().getName()
 					+ " 到了 在等待其它人都到了开始起跑");
+			if (Thread.currentThread().getName().equals("Thread-2")) {
+				System.out.println("thread-2进来了");
+				Thread.sleep(5000);
+				Thread.currentThread().interrupt();
+			}
 			cbRef.await();
 			System.out.println(Thread.currentThread().getName() +"都到了，开始跑!");
 			System.out.println(Thread.currentThread().getName() + " 到达终点，并结束第"
